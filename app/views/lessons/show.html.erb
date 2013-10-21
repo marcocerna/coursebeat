@@ -1,0 +1,21 @@
+<h1><%= @lesson.title %></h1>
+
+<% @concepts.keys.each do |key_concept| %>
+	<h2><%= key_concept.info %></h2>
+	<% @concepts[key_concept].each do |sub_concept| %>
+		<p>
+			<div class="left"><%= sub_concept.info %></div>
+			<div class="right">
+				<form action="/lessons/<%= sub_concept.id %>/update" method="post">
+					0 <input type="radio" name="rating" value=0> 
+					1 <input type="radio" name="rating" value=1> 
+					2 <input type="radio" name="rating" value=2> 
+					3 <input type="radio" name="rating" value=3> 
+					4 <input type="radio" name="rating" value=4>
+					5 <input type="radio" name="rating" value=5> 
+					<input type="submit" class="btn btn-primary btn-sm" value="Submit"> <br> Rating Count: <%= sub_concept.ratingCount %> - Average: <%= sub_concept.ratingAverage %>
+				</form>
+			</div>
+		</p>
+	<% end %>
+<% end %>
