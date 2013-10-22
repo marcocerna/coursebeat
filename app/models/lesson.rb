@@ -1,8 +1,7 @@
 class Lesson < ActiveRecord::Base
   attr_accessible :title, :date
 
-  has_many :key_concepts
+  has_many :key_concepts, :dependent => :destroy
 
-  validates :title, presence: true, uniqueness: true
-  validates :date, presence: true
+  validates :title, presence: true
 end

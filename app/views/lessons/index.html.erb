@@ -1,9 +1,10 @@
 <h1>Lessons Master List</h1>
-
+<br>
 <% @lessons.each do |entry| %>
-	<li><a href="/lessons/<%= entry.id %>"><%= entry.title %></a>
-    <a class="btn btn-primary btn-sm" href="#">Edit</a>
-   	<a class="btn btn-danger btn-sm" href="#" method="delete">Delete</a></li>
+	<li>
+   	<%= link_to entry.title, lesson_path(entry) %>
+   	<%= link_to "Edit", edit_lesson_path(entry), class: 'btn btn-primary' %>
+   	<%= link_to "Delete", lesson_path(entry), :method => :delete, class: 'btn btn-danger' %></li>
 <% end %>
 <br>
-<a class="btn btn-primary btn-md" href="/lessons/new">New Lesson</a>
+<a class="btn btn-primary btn-lg" href="/lessons/new">New Lesson</a>
