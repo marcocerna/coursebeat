@@ -63,7 +63,7 @@ var addSubConcept = function(count) {
 	subConceptHolder.append(lineBreak);
 };
  
- $(function(){
+$(function(){
  	$("#submitButton").on("click", function() {
 		var keyArray = $(".keyConcept");
 		var keyHash = {};

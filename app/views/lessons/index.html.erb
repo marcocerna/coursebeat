@@ -1,10 +1,19 @@
-<h1>Lessons Master List</h1>
-<br>
-<% @lessons.each do |entry| %>
-	<li>
-   	<%= link_to entry.title, lesson_path(entry) %>
-   	<%= link_to "Edit", edit_lesson_path(entry), class: 'btn btn-primary' %>
-   	<%= link_to "Delete", lesson_path(entry), :method => :delete, class: 'btn btn-danger' %></li>
+<% if current_user %>
+	<h1><div class="left">Lessons Master List</div>
+		<div class="right">
+			<a class="btn btn-success btn-lg" href="/lessons/new" id="newLesson">New Lesson</a>
+		</div>
+	</h1>
+<% else %>
+	<h1>Lessons Master List</h1>
 <% end %>
 <br>
-<a class="btn btn-primary btn-lg" href="/lessons/new">New Lesson</a>
+<% @lessons.reverse.each do |entry| %>
+	<p>
+   	<div class="left"><%= link_to entry.title, lesson_path(entry) %></div>
+   	<div class="right"><%= link_to "Edit", edit_lesson_path(entry), class: 'btn btn-primary' %>
+   	<%= link_to "Delete", lesson_path(entry), :method => :delete, class: 'btn btn-danger' %></div></p>
+<% end %>
+<br>
+
+

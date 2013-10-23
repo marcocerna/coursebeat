@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131022181155) do
+ActiveRecord::Schema.define(:version => 20131023055804) do
 
   create_table "instructors", :force => true do |t|
     t.string   "username"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(:version => 20131022181155) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.integer  "ratingCount"
+    t.string   "secret_code"
   end
 
   create_table "sub_concepts", :force => true do |t|

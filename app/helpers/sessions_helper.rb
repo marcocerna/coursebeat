@@ -1,7 +1,7 @@
 module SessionsHelper
 
  def sign_in(instructor)
-    cookies.permanent[:remember_token] = @instructor.remember_token
+    cookies.permanent[:remember_token] = instructor.remember_token
  end
     
  def sign_out

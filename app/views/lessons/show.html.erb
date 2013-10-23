@@ -13,7 +13,15 @@
 					3 <input type="radio" name="rating" value=3> 
 					4 <input type="radio" name="rating" value=4>
 					5 <input type="radio" name="rating" value=5> 
-					<input type="submit" class="btn btn-primary btn-sm" value="Submit"> <br> Rating Count: <%= sub_concept.ratingCount %> - Average: <%= sub_concept.ratingAverage %>
+
+					<% unless read_cookies.include?(sub_concept.id) %>
+						<input type="submit" class="btn btn-primary btn-sm" value="Submit"> 
+					<% end %><br> 
+					<% if current_user %>
+						Rating Count: <%= sub_concept.ratingCount %> - Average: <%= sub_concept.ratingAverage %>
+					<% else %>
+						Average: <%= sub_concept.ratingAverage %>
+					<% end %>
 				</form>
 			</div>
 		</p>

@@ -2,14 +2,16 @@ class SessionsController < ApplicationController
     skip_before_filter :authorize, only: [:new, :create]
 
 def new
+	@instructor = Instructor.new
 end
 
 
 def create
-     @instructor = Instructor.find_by_username(params[:username])
-     if @instructor && @instructor.authenticate(params[:password])              
+     @instructor = Instructor.find_by_username(params[:instructor][:username])
+     if @instructor && @instructor.authenticate(params[:instructor][:password])              
           cookies.permanent[:remember_token] = @instructor.remember_token
           sign_in(@instructor)
+          redirect_to lessons_path
      else
           flash[:errors] = "Error!"
           render :new
