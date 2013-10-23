@@ -1,5 +1,5 @@
 class InstructorsController < ApplicationController
-skip_before_filter :authorize, only: [:new]
+skip_before_filter :authorize, only: [:new, :create]
 
 def new
 	@instructor = Instructor.new
@@ -18,6 +18,7 @@ end
 
 def show
      @instructor = current_user
+     @courses = @instructor.courses
 end
 
 end
