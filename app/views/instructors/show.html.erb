@@ -1,4 +1,8 @@
-<h1>Courses for <%= @instructor.username %></h1><br>
+<h1><div class="left">Courses for <%= @instructor.username %></div></h1><br>
+
+<div class="right">
+	<a class="btn btn-success btn-lg" href="/courses/new" id="newLesson">New Course</a>
+</div>
 
 <% @courses.reverse.each do |course| %>
 	<p>

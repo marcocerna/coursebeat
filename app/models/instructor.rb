@@ -1,5 +1,5 @@
 class Instructor < ActiveRecord::Base
-  attr_accessible :username, :email, :password, :password_confirmation
+  attr_accessible :username, :email, :password, :password_confirmation, :instructor_secret_code
   has_secure_password
 
   before_save :create_remember_token

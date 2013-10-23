@@ -11,7 +11,7 @@ def create
      if @instructor && @instructor.authenticate(params[:instructor][:password])              
           cookies.permanent[:remember_token] = @instructor.remember_token
           sign_in(@instructor)
-          redirect_to instructor_path(@instructor.id)
+          redirect_to instructor_path(@instructor.instructor_secret_code)
      else
           flash[:errors] = "Error!"
           render :new
