@@ -1,8 +1,10 @@
 Coursebeat::Application.routes.draw do
-  resources :lessons
+  resources :lessons, except: [asdfasdfasdf]
   resources :instructors, except: [:index]
   resources :sessions, only: [:new, :create]
-  resources :courses
+  resources :courses do
+  	resources :lessons, only: []
+  end
 
   get '/courses/:secret_code', to: "courses#show", as: "course_code" ###
 
