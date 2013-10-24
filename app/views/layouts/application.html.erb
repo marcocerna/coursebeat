@@ -23,8 +23,12 @@
 	</ul>
 </nav>
 
+
+
 <div class="jumbotron">
-<%= flash[:errors] if flash[:errors] %>
+<div class="alert-success"><%= flash[:alert] if flash[:alert] %></div>
+<div class="alert-error"><%= flash[:errors] if flash[:errors] %></div>
+
 
 <%= yield %>
 </div>

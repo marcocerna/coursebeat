@@ -5,8 +5,8 @@
 		</div>
 	</h1>
 <% else %>
-	<h1 class="left">Welcome to CourseBeat!</h1><br><br>
-	<h2>Check out some sample lessons!</h2><br>
+	<h1 class="left">Welcome to CourseBeat! <span class="glyphicon glyphicon-book"></span></h1><br><br><br>
+	<h2>Check out some sample lessons!</h2>
 <% end %>
 <br>
 
@@ -14,7 +14,7 @@
 	<% if entry.secret_code == "0" %>
 	<p>
    	<div class="left"><%= link_to entry.title, lesson_path(entry) %></div>
-   	<div class="right"><%= link_to "Edit", edit_lesson_path(entry), class: 'btn btn-primary' %>
+   	<div class="right"><%= link_to "View", lesson_path(entry), class: 'btn btn-primary' %>
    	<%= link_to "Delete", lesson_path(entry), :method => :delete, class: 'btn btn-danger' %></div></p>
    	<% end %>
 <% end %>

@@ -12,7 +12,7 @@ end
 
 def create
 	course = Course.find_by_secret_code(params[:course_id])
-	lesson = Lesson.create(title: params[:title], course_id: course.id)
+	lesson = Lesson.create(title: params[:title], course_id: course.id, secret_code: SecureRandom.urlsafe_base64)
 	# when lesson create, set secret code as attribute of class
 	unless params["keyHash"] == nil
 		params["keyHash"].each do |num1, key_info|

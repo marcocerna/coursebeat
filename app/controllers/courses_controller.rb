@@ -6,13 +6,12 @@ def new
 end
 
 def create
-	binding.pry
 	@course = Course.create(class_name: params[:course][:class_name], secret_code: SecureRandom.urlsafe_base64)
-	redirect_to course_code_path(@course.secret_code)
+	redirect_to instructor_path(current_user.instructor_secret_code)
+	flash[:alert] = "Your course has been created."
 end
 
 def show
-	# binding.pry
 	@lessons = []
 	@courses = []
 	if current_user
@@ -22,7 +21,6 @@ def show
 	else
 		@courses += Course.where(secret_code: params[:id])
 		@courses.each do |course|
-						binding.pry	
 			@lessons += Lesson.where(course_id: course.id)
 		end
 	end
