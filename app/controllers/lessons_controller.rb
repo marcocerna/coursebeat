@@ -2,6 +2,7 @@ class LessonsController < ApplicationController
 	skip_before_filter :authorize, except: [:new, :edit, :destroy]
 
 def index
+	# redirect_to "lessons/2"
 	@lessons = Lesson.all
 	#Lesson.find_by_secret_code asdfasdf
 end
@@ -10,7 +11,8 @@ def new
 end
 
 def create
-	lesson = Lesson.create(title: params["lesson"], secret_code: SecureRandom.urlsafe_base64)
+	course = Course.find_by_secret_code(params[:course_id])
+	lesson = Lesson.create(title: params[:title], course_id: course.id)
 	# when lesson create, set secret code as attribute of class
 	unless params["keyHash"] == nil
 		params["keyHash"].each do |num1, key_info|
@@ -24,7 +26,7 @@ def create
 			end
 		end
 	end
-	redirect_to lessons_path
+	redirect_to course_path(params[:course_id])
 
 end
 
@@ -72,7 +74,10 @@ def update
 end
 
 def destroy
-	lesson = Lesson.destroy(params[:id])
-	redirect_to lessons_path
+
+	lesson = Lesson.find(params[:id])
+	course = lesson.course
+	Lesson.destroy(params[:id])
+	redirect_to course_path(course.secret_code)
 end
 end

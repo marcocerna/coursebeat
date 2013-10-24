@@ -1,9 +1,10 @@
 Coursebeat::Application.routes.draw do
-  resources :lessons, except: []
+
+  resources :lessons, except: [:new, :create]
   resources :instructors, except: [:index]
   resources :sessions, only: [:new, :create]
   resources :courses do
-  	resources :lessons, only: []
+  	resources :lessons, only: [:new, :create]
   end
 
   get '/courses/:secret_code', to: "courses#show", as: "course_code"
@@ -11,9 +12,11 @@ Coursebeat::Application.routes.draw do
 
   root to: "lessons#index"
 
-  post "/lessons/:id/update", to: "lessons#update"
+post "/lessons/:id/update", to: "lessons#update"
 
   get '/logout' => "sessions#destroy"
+
+  match '*path' => redirect('/')
 
 # $ rake routes
 #        root        /                             lessons#index

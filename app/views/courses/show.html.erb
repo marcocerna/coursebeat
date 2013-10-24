@@ -1,7 +1,8 @@
 <% if current_user %>
-	<h1><div class="left">Lessons for [enter course name here]</div>
+	<h1><div class="left">Lessons for <%= @course.class_name %></div>
 		<div class="right">
-			<a class="btn btn-success btn-lg" href="/lessons/new" id="newLesson">New Lesson</a>
+			<!-- <a class="btn btn-success btn-lg" href="/lessons/new" id="newLesson">New Lesson</a> -->
+			<%= link_to "New Lesson", new_course_lesson_path(@course.secret_code), class: "btn btn-success btn-lg" %>
 		</div>
 	</h1>
 <% else %>
@@ -11,8 +12,12 @@
 <% @lessons.reverse.each do |entry| %>
 	<p>
    	<div class="left"><%= link_to entry.title, lesson_path(entry) %></div>
-   	<div class="right"><%= link_to "Edit", edit_lesson_path(entry), class: 'btn btn-primary' %>
-   	<%= link_to "Delete", lesson_path(entry), :method => :delete, class: 'btn btn-danger' %></div></p>
+   	<div class="right">
+   		<%= link_to "Edit", edit_lesson_path(entry), class: 'btn btn-primary' %>
+   		<%= link_to "Delete", lesson_path(entry), :method => :delete, class: 'btn btn-danger' %>
+   	</div>
+   	<%# binding.pry %>
+   	</p>
 <% end %>
 <br>
 

@@ -26,7 +26,7 @@ def show
 			@lessons += Lesson.where(course_id: course.id)
 		end
 	end
-
+	@course = Course.find_by_secret_code(params[:id])
 end
 
 end
