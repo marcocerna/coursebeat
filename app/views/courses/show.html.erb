@@ -1,4 +1,4 @@
-<% if current_user %>
+<% if current_user %> 
 	<h1><div class="left">Lessons for <%= @course.class_name %></div>
 		<div class="right">
 			<!-- <a class="btn btn-success btn-lg" href="/lessons/new" id="newLesson">New Lesson</a> -->
@@ -6,12 +6,18 @@
 		</div>
 	</h1>
 <% else %>
-	<h1>Lessons for <%= @courses[0].class_name %></h1>
+	<h1>Lessons for <%= @course.class_name %></h1>
 <% end %>
-<br>
-<% @lessons.reverse.each do |entry| %>
+<h2>Instructors:</h2>
+<% @course.instructors.each do |instructor| %>
+	<p><%= instructor.username %></p>
+<% end %>
+
+
+<br><br>
+<% @course.lessons.reverse.each do |entry| %>
 	<p>
-   	<div class="left"><%= link_to entry.title, lesson_path(entry) %></div>
+   	<div class="left"><%= link_to entry.title, lesson_path(entry.secret_code) %></div>
    	<div class="right">
    		<%= link_to "Edit", edit_lesson_path(entry), class: 'btn btn-primary' %>
    		<%= link_to "Delete", lesson_path(entry), :method => :delete, class: 'btn btn-danger' %>

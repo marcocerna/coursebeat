@@ -11,9 +11,12 @@ def new
 end
 
 def create
+	# binding.pry
 	course = Course.find_by_secret_code(params[:course_id])
-	lesson = Lesson.create(title: params[:title], course_id: course.id, secret_code: SecureRandom.urlsafe_base64)
+	# binding.pry
+	lesson = Lesson.create(title: params[:lesson], course_id: course.id, secret_code: SecureRandom.urlsafe_base64)
 	# when lesson create, set secret code as attribute of class
+	# binding.pry
 	unless params["keyHash"] == nil
 		params["keyHash"].each do |num1, key_info|
 			k = KeyConcept.create(info: key_info, lesson_id: lesson.id)
@@ -26,12 +29,14 @@ def create
 			end
 		end
 	end
+	# binding.pry
 	redirect_to course_path(params[:course_id])
 
 end
 
 def show
-	@lesson = Lesson.find(params[:id])
+	@lesson = Lesson.find_by_secret_code(params[:id])
+	# binding.pry
 	@concepts = {}
 	@key_concepts = KeyConcept.where(lesson_id: @lesson.id)
 	@key_concepts.each do |key_concept|
@@ -69,12 +74,12 @@ def update
 		cookies << @sub_concept.id
 		write_cookies(cookies)
 	end
-	lesson = @sub_concept.key_concept.lesson
-	redirect_to lesson
+	lesson = @sub_concept.key_concept.lesson.secret_code
+
+	redirect_to "/lessons/" + lesson
 end
 
 def destroy
-
 	lesson = Lesson.find(params[:id])
 	course = lesson.course
 	Lesson.destroy(params[:id])

@@ -53,7 +53,7 @@ var addSubConcept = function(count) {
 	var textbox = document.createElement("input");
   	textbox.type = "text";
 	textbox.value = "Sub Concept #" + count + '.';
-	textbox.name = "subConceptCount";
+	textbox.name = "sub_concept[info]";
 	textbox.className = "subConcept";
 	textbox.id = count;
 
@@ -62,9 +62,33 @@ var addSubConcept = function(count) {
 	subConceptHolder.append(textbox);
 	subConceptHolder.append(lineBreak);
 };
- 
+
+var instructorCount = 1;
+
+var addInstructor = function() {
+	
+	var instructorHolder = document.getElementById("instructorHolder");
+
+	var textbox = document.createElement("input");
+	textbox.type = "text";
+	textbox.value = "Instructor Username #" + instructorCount;
+	textbox.className = "instructor";
+	textbox.name = "instructors[" + instructorCount + "]";
+	textbox.id = instructorCount;
+
+    var lineBreak = document.createElement("br");
+
+	instructorHolder.appendChild(textbox);
+	instructorHolder.appendChild(lineBreak);
+
+	instructorCount += 1;
+
+};
+
+
 $(function(){
- 	$("#submitButton").on("click", function() {
+ 	$("#submitButton").on("click", function(event) {
+ 		event.preventDefault();
 		var keyArray = $(".keyConcept");
 		var keyHash = {};
 
@@ -83,12 +107,15 @@ $(function(){
 		};
 
 		var lesson = $(".title").val();
+		var course = $("#submitButton").data("course");
 
-		console.log(keyHash, subHash);
-		$.post('/lessons', {
+		console.log(keyHash, subHash, course);
+		$.post("/courses/" + course + "/lessons", {
 		  keyHash: keyHash,
 		  subHash: subHash,
 		  lesson: lesson
+		}, function(response) {
+			window.location.href = '/courses/' + course;;
 		});
 	});
 });

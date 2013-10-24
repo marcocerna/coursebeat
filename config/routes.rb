@@ -7,6 +7,7 @@ Coursebeat::Application.routes.draw do
   	resources :lessons, only: [:new, :create]
   end
 
+  # get '/lessons/:secret_code', to: "lessons#show", as: "lesson_code"
   get '/courses/:secret_code', to: "courses#show", as: "course_code"
   # get '/instructors/:instructor_secret_code', to: "instructors#show", as: "instructor_code" 
 

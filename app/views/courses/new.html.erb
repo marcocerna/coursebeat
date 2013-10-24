@@ -1,7 +1,9 @@
-<h1>Create a Course</h1>
+<h1>Create a Course</h1><br>
 
 <%= form_for @course do |c| %>
-  <%= c.text_field :class_name, placeholder: "Course name" %><br>
+  <%= c.text_field :class_name, placeholder: "Course name" %> 
+  <input type="button" class="btn btn-primary btn-sm" value="Add Instructor" onClick="addInstructor()"><br>
+  <div id="instructorHolder"></div><br>
   <%= c.submit %>
 <% end %>
 

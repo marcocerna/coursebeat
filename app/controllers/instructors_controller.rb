@@ -20,6 +20,8 @@ end
 def show
      @instructor = current_user
      @courses = @instructor.courses
+     session[:instructor_id] = params[:id]
+     # binding.pry
 end
 
 end

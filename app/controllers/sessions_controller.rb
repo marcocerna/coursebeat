@@ -8,12 +8,14 @@ end
 
 def create
      @instructor = Instructor.find_by_username(params[:instructor][:username])
-     if @instructor && @instructor.authenticate(params[:instructor][:password])              
+     if @instructor == nil
+          redirect_to new_session_path, :flash => { :errors => "Invalid username"}
+     elsif @instructor && @instructor.authenticate(params[:instructor][:password])              
           cookies.permanent[:remember_token] = @instructor.remember_token
           sign_in(@instructor)
           redirect_to instructor_path(@instructor.instructor_secret_code)
      else
-          flash[:errors] = "Error!"
+          flash[:errors] = "Try typing your password in correctly next time..."
           render :new
      end
 end
