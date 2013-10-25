@@ -10,7 +10,7 @@
 <br>
 <% @courses.reverse.each do |course| %>
 	<p>
-   	<div class="left"><%= link_to course.class_name, course_path(course.secret_code) %></div>
+   	<div class="left"><%= link_to course.course_name, course_path(course.secret_code) %></div>
    	<div class="right">
    		<%= link_to "View", course_path(course.secret_code), class: 'btn btn-primary' %>
    		<%= link_to "Edit", edit_course_path(course.secret_code), class: 'btn btn-info' %>

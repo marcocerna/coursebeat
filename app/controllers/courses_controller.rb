@@ -6,7 +6,7 @@ def new
 end
 
 def create
-	if params[:course][:class_name] == ""
+	if params[:course][:course_name] == ""
 		flash[:errors] = "You must enter a valid course name"
 		redirect_to new_course_path
 	elsif params[:instructors] == nil
@@ -17,7 +17,7 @@ def create
 		params[:instructors].each do |num, username|
 			instructor = Instructor.find_by_username(username)
 			unless instructor == nil
-				@course = Course.create(class_name: params[:course][:class_name], secret_code: SecureRandom.urlsafe_base64)
+				@course = Course.create(course_name: params[:course][:course_name], secret_code: SecureRandom.urlsafe_base64)
 				CourseInstructor.create(course_id: @course.id, instructor_id: instructor.id)
 				flash[:alert] = "Your course has been created."
 			else
@@ -43,7 +43,7 @@ end
 def update
 	binding.pry
 	course = Course.find_by_secret_code(params[:id])
-	course.update_attributes(class_name: params[:course][:class_name])
+	course.update_attributes(course_name: params[:course][:course_name])
 	if params[:instructors]
 		params[:instructors].each do |key, name|
 			instructor = Instructor.find_by_username(name)
@@ -55,7 +55,7 @@ end
 
 def destroy
 	lesson = Course.destroy(params[:id])
-	flash[:error] = lesson.class_name + " has been deleted"
+	flash[:error] = lesson.course_name + " has been deleted"
 	redirect_to instructor_path(session[:instructor_id])
 
 end

@@ -1,5 +1,5 @@
 class Course < ActiveRecord::Base
-  attr_accessible :class_name, :secret_code
+  attr_accessible :course_name, :secret_code
 
   has_many :lessons
   has_many :course_instructors
