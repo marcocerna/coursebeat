@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131025015049) do
+ActiveRecord::Schema.define(:version => 20131025055109) do
 
   create_table "course_instructors", :force => true do |t|
     t.integer  "course_id"
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(:version => 20131025015049) do
     t.datetime "updated_at",  :null => false
     t.integer  "ratingCount"
     t.string   "secret_code"
-    t.string   "course_id"
+    t.integer  "course_id"
   end
 
   create_table "sub_concepts", :force => true do |t|

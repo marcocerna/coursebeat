@@ -18,7 +18,7 @@
 <br>
 
 <% @lessons.reverse.each do |entry| %>
-	<% if entry.course_id == "0" %>
+	<% if entry.course_id == 0 %>
 	<p>
    	<div class="left"><%= link_to entry.title, lesson_path(entry.secret_code) %></div>
    	<div class="right"><%= link_to "View", lesson_path(entry.secret_code), class: 'btn btn-primary' %>
