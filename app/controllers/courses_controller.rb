@@ -18,7 +18,7 @@ def create
 			instructor = Instructor.find_by_username(username)
 			unless instructor == nil
 				@course = Course.create(course_name: params[:course][:course_name], secret_code: SecureRandom.urlsafe_base64)
-				CourseInstructor.create(course_id: @course.id, instructor_id: instructor.id)
+				CourseInstructor.create(course_id: @course.id.to_s, instructor_id: instructor.id.to_s)
 				flash[:alert] = "Your course has been created."
 			else
 				flash[:errors] = "That instructor username doesn't exist!"
@@ -47,7 +47,7 @@ def update
 	if params[:instructors]
 		params[:instructors].each do |key, name|
 			instructor = Instructor.find_by_username(name)
-			CourseInstructor.create(course_id: course.id, instructor_id: instructor.id)
+			CourseInstructor.create(course_id: course.id.to_s, instructor_id: instructor.id.to_s)
 		end
 	end
 	redirect_to course_path(params[:id])

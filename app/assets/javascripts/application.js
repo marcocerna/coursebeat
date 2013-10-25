@@ -15,6 +15,7 @@
 //= require_tree .
 
 var keyConceptCount = 1;
+var subConceptCount = 1;
 
 var addKeyConcept = function() {
     var keyConceptHolder = document.getElementById("keyConceptHolder");
@@ -52,7 +53,7 @@ var addSubConcept = function(count) {
 
 	var textbox = document.createElement("input");
   	textbox.type = "text";
-	textbox.value = "Sub Concept #" + count + '.';
+	textbox.value = "Sub Concept #" + subConceptCount;
 	textbox.name = "sub_concept[info]";
 	textbox.className = "subConcept";
 	textbox.id = count;
@@ -61,6 +62,9 @@ var addSubConcept = function(count) {
 
 	subConceptHolder.append(textbox);
 	subConceptHolder.append(lineBreak);
+
+	subConceptCount += 1;
+
 };
 
 var instructorCount = 1;

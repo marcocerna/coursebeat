@@ -63,3 +63,15 @@ input[type="password"] {
 #new_instructor {
 	text-align: center;
 }
+
+.subConcept {
+	margin-left: 100px;
+}
+
+.keyConcept {
+	margin-bottom: 20px;
+}
+
+#subConceptButton {
+	margin-left: 10px;
+}
