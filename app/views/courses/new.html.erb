@@ -2,8 +2,8 @@
 
 <%= form_for @course do |c| %>
   <%= c.text_field :course_name, placeholder: "Course name" %> 
-  <input type="button" class="btn btn-primary btn-sm" value="Add Instructor" onClick="addInstructor()"><br>
+  <input type="button" class="btn btn-primary btn-md" value="Add Instructor" onClick="addInstructor()"><br>
   <div id="instructorHolder"></div><br>
-  <%= c.submit %>
+  <%= c.submit 'Create Course', class: 'btn btn-success btn-lg' %>
 <% end %>
 

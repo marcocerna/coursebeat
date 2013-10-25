@@ -2,9 +2,12 @@
 <%# binding.pry %>
 
 <%= form_for @course, url: {action: "update"} do |c| %>
-  <h2>Title:</h2> <%= c.text_field :course_name, placeholder: @course.course_name %> <br>
+	<div class="title_bar">
+  	<div class="left"><h2>Title: </h2> </div>
+  	<div class="right"><%= c.text_field :course_name, placeholder: @course.course_name %></div> <br>
+  	</div>
 	<div class="left"><h2>Instructors:</h2></div>
-	<div class="right"><input type="button" class="btn btn-primary btn-md" value="Add Instructor" onClick="addInstructor()"></div>
+	<div class="right"><input type="button" id="add_instructor" class="btn btn-primary btn-md" value="Add Instructor" onClick="addInstructor()"></div>
 	<br>
 	<% @course.instructors.each do |instructor| %>
 		<p>
@@ -13,7 +16,7 @@
 		</p>
 	<% end %>
   <div id="instructorHolder"></div><br>
-  <%= c.submit %>
+  <%= c.submit "Update Course", class: 'btn btn-success btn-lg' %>
 <% end %>
 
 

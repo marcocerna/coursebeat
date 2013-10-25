@@ -75,3 +75,27 @@ input[type="password"] {
 #subConceptButton {
 	margin-left: 10px;
 }
+
+#newLessonButton {
+	margin-top: 15px;
+}
+
+.edit_instructor {
+	text-align: center;
+}
+
+#lessonTitle {
+	font-size: 30px;
+}
+
+#course_course_name {
+	margin-top: 10px;
+}
+
+#add_instructor {
+	margin-top: 20px;
+}
+
+.alert {
+	margin: 5px 0px 5px 15px;
+}

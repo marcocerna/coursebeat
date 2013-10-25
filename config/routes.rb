@@ -13,7 +13,9 @@ Coursebeat::Application.routes.draw do
 
   root to: "lessons#index"
 
-post "/lessons/:id/update", to: "lessons#update"
+  post "/lessons/:id/update", to: "lessons#update"
+
+  post "/courses/:id/remove", to: "courses#remove_instructor", as: "remove_instructor"
 
   get '/logout' => "sessions#destroy"
 

@@ -41,7 +41,6 @@ def edit
 end
 
 def update
-	binding.pry
 	course = Course.find_by_secret_code(params[:id])
 	course.update_attributes(course_name: params[:course][:course_name])
 	if params[:instructors]
@@ -51,6 +50,10 @@ def update
 		end
 	end
 	redirect_to course_path(params[:id])
+end
+
+def remove_instructor
+	redirect_to edit_course_path(params[:id])
 end
 
 def destroy

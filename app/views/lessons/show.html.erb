@@ -17,7 +17,7 @@
 					<% unless read_cookies.include?(sub_concept.id) %>
 						<input type="submit" class="btn btn-primary btn-sm" value="Submit"> 
 					<% end %><br> 
-					<% if current_user %>
+					<% if true %>
 						Rating Count: <%= sub_concept.ratingCount %> - Average: <%= sub_concept.ratingAverage %>
 					<% else %>
 						Average: <%= sub_concept.ratingAverage %>
