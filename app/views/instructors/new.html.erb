@@ -1,10 +1,10 @@
-<h1>Sign Up</h1>
-
+<h1>Join CourseBeat!</h1>
+<br>
 <%= form_for @instructor do |f| %>
   <%= f.text_field :username, 					placeholder: "Username" %><br>
   <%= f.text_field :email, 						placeholder: "Email" %><br>
   <%= f.password_field :password, 				placeholder: "Password" %><br>
-  <%= f.password_field :password_confirmation, 	placeholder: "Password Confirmation" %><br>
-  <%= f.submit %>
+  <%= f.password_field :password_confirmation, 	placeholder: "Password Confirmation" %><br><br>
+  <%= f.submit 'Sign Up', :class => 'btn btn-success btn-lg' %>
 <% end %>
 

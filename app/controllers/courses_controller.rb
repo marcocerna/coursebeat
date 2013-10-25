@@ -55,6 +55,7 @@ end
 
 def destroy
 	lesson = Course.destroy(params[:id])
+	flash[:error] = lesson.class_name + " has been deleted"
 	redirect_to instructor_path(session[:instructor_id])
 
 end

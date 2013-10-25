@@ -26,14 +26,20 @@
 
 
 <div class="jumbotron">
-<div class="alert-success"><%= flash[:alert] if flash[:alert] %></div>
-<div class="alert-error"><%= flash[:errors] if flash[:errors] %></div>
-
+<% if flash[:alert] %>
+	<div class="alert alert-success"><%= flash[:alert] if flash[:alert] %></div>
+<% end %>
+<% if flash[:error] %>
+<div class="alert alert-danger"><%= flash[:error] if flash[:error] %></div>
+<% end %>
+<% if flash[:info] %>
+<div class="alert alert-info"><%= flash[:info] if flash[:info] %></div>
+<% end %>
 
 <%= yield %>
 </div>
 
 
-<%= params.inspect %>
+<!-- <%= params.inspect %> -->
 </body>
 </html>

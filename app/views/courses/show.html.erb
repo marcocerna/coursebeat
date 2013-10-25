@@ -1,18 +1,22 @@
-<% if current_user %> 
-	<h1><div class="left">Lessons for <%= @course.class_name %></div>
-		<div class="right">
-			<!-- <a class="btn btn-success btn-lg" href="/lessons/new" id="newLesson">New Lesson</a> -->
-			<%= link_to "New Lesson", new_course_lesson_path(@course.secret_code), class: "btn btn-success btn-lg" %>
-		</div>
-	</h1>
-<% else %>
-	<h1>Lessons for <%= @course.class_name %></h1>
-<% end %>
-<h2>Instructors:</h2>
-<% @course.instructors.each do |instructor| %>
-	<p><%= instructor.username %></p>
-<% end %>
+<div class="top">
+	<% if current_user %> 
+		<h1><div class="left">Lessons for <%= @course.class_name %></div></h1>
+	<% else %>
+		<h1>Lessons for <%= @course.class_name %></h1>
+	<% end %>
+</div>
 
+<div class="info-bar">
+	<div class="left">
+	<%= link_to "New Lesson", new_course_lesson_path(@course.secret_code), class: "btn btn-success btn-lg" %>
+	</div>
+	<div class="right">
+		<h2>Instructors:</h2>
+		<% @course.instructors.each do |instructor| %>
+			<p><%= instructor.username %></p>
+		<% end %>
+	</div>
+</div>
 
 <br><br>
 <% @course.lessons.reverse.each do |entry| %>
@@ -26,3 +30,4 @@
 <% end %>
 <br>
 
+<%= link_to "Back to Course List", instructor_path(current_user.instructor_secret_code), class: 'btn btn-warning' %>

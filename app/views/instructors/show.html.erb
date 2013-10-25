@@ -1,9 +1,13 @@
-<h1><div class="left">Courses for <%= @instructor.username %></div></h1><br>
+<h1><div class="left">Courses for <%= @instructor.username %></div></h1><br><br>
 
+<div class="buttonsBar">
+	<div class="left"><a class="btn btn-success btn-lg" href="/courses/new" id="newLesson">New Course</a></div>
+	<div class="right">
+		<%= link_to "Edit Account", edit_instructor_path(params[:id]), class: "btn btn-info btn-lg" %>
+		<%= link_to "Delete Account", "#", class: "btn btn-danger btn-lg" %>
+	</div>
+</div>
 <br>
-<a class="btn btn-success btn-lg" href="/courses/new" id="newLesson">New Course</a>
-
-
 <% @courses.reverse.each do |course| %>
 	<p>
    	<div class="left"><%= link_to course.class_name, course_path(course.secret_code) %></div>

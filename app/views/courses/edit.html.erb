@@ -1,7 +1,6 @@
 <h1>Edit Course Info</h1><br>
 <%# binding.pry %>
 
-
 <%= form_for @course, url: {action: "update"} do |c| %>
   <h2>Title:</h2> <%= c.text_field :class_name, placeholder: @course.class_name %> <br>
 	<div class="left"><h2>Instructors:</h2></div>

@@ -34,4 +34,15 @@ Coursebeat::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  #ActionMailer Config
+  config.action_mailer.delivery_method =:smtp
+  config.action_mailer.smtp_settings = {
+    address:    'smtp.gmail.com',
+    port:          587,
+    domain:      'CourseBeat',
+    user_name:  'marco.a.cerna@gmail.com',
+    password:      'supplyyoungrabbittrade',
+    authentication: 'plain',
+    enable_starttls_auto: true}
 end
