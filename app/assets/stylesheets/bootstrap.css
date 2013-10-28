@@ -48,6 +48,8 @@ html {
 
 body {
   margin: 0;
+  background-image: url("http://ebookfriendly.com/wp-content/uploads/2012/11/Book-iPad-wallpaper-Flying-Letters.jpg");
+  background-size: 100%;
 }
 
 a:focus {
