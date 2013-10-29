@@ -18,7 +18,6 @@
 	</div>
 </div>
 
-<%# binding.pry %>
 <% @course.lessons.reverse.each do |entry| %>
 	<p>
    	<div class="left"><%= link_to entry.title, lesson_path(entry.secret_code) %></div>

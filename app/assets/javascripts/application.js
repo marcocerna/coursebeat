@@ -46,13 +46,11 @@ var addKeyConcept = function() {
     keyConceptHolder.appendChild(lineBreak);
 
     keyConceptCount += 1;
-}
+};
 
 var addSubConcept = function(count) {
-	var subConceptHolder = $("#subConceptHolder" + count);
-
 	var textbox = document.createElement("input");
-  	textbox.type = "text";
+  textbox.type = "text";
 	textbox.value = "Sub Concept #" + subConceptCount;
 	textbox.name = "sub_concept[info]";
 	textbox.className = "subConcept";
@@ -64,13 +62,11 @@ var addSubConcept = function(count) {
 	subConceptHolder.append(lineBreak);
 
 	subConceptCount += 1;
-
 };
 
 var instructorCount = 1;
 
 var addInstructor = function() {
-	
 	var instructorHolder = document.getElementById("instructorHolder");
 
 	var textbox = document.createElement("input");
@@ -80,13 +76,12 @@ var addInstructor = function() {
 	textbox.name = "instructors[" + instructorCount + "]";
 	textbox.id = instructorCount;
 
-    var lineBreak = document.createElement("br");
+  var lineBreak = document.createElement("br");
 
 	instructorHolder.appendChild(textbox);
 	instructorHolder.appendChild(lineBreak);
 
 	instructorCount += 1;
-
 };
 
 
@@ -119,7 +114,7 @@ $(function(){
 		  subHash: subHash,
 		  lesson: lesson
 		}, function(response) {
-			window.location.href = '/courses/' + course;;
+			window.location.href = '/courses/' + course;
 		});
 	});
 });

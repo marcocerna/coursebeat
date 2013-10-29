@@ -9,6 +9,11 @@ group :development do
 	gem 'sqlite3'
 end
 
+group :development, :test do
+	gem "rspec-rails"
+	gem 'nyan-cat-formatter'
+end
+
 gem 'pry-rails'
 
 gem 'quiet_assets', :group => :development

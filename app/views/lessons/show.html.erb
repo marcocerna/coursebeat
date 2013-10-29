@@ -4,26 +4,23 @@
 	<h2><%= key_concept.info %></h2>
 	<% @concepts[key_concept].each do |sub_concept| %>
 		<p>
-			<div class="left"><%= sub_concept.info %></div>
-			<div class="right">
-				<form action="/lessons/<%= sub_concept.id %>/update" method="post">
-					0 <input type="radio" name="rating" value=0> 
-					1 <input type="radio" name="rating" value=1> 
-					2 <input type="radio" name="rating" value=2> 
-					3 <input type="radio" name="rating" value=3> 
-					4 <input type="radio" name="rating" value=4>
-					5 <input type="radio" name="rating" value=5> 
+		<div class="left"><%= sub_concept.info %></div>
+		<div class="right">
+			<form action="/lessons/<%= sub_concept.id %>/update" method="post">
+				 <input type="button" name="rating" value=0 class="btn btn-default"> 
+				 <input type="button" name="rating" value=1 class="btn btn-default"> 
+				 <input type="button" name="rating" value=2 class="btn btn-default"> 
+				 <input type="button" name="rating" value=3 class="btn btn-default"> 
+				 <input type="button" name="rating" value=4 class="btn btn-default">
+				 <input type="button" name="rating" value=5 class="btn btn-default"> 
 
-					<% unless read_cookies.include?(sub_concept.id) %>
-						<input type="submit" class="btn btn-primary btn-sm" value="Submit"> 
-					<% end %><br> 
-					<% if true %>
-						Rating Count: <%= sub_concept.ratingCount %> - Average: <%= sub_concept.ratingAverage %>
-					<% else %>
-						Average: <%= sub_concept.ratingAverage %>
-					<% end %>
-				</form>
-			</div>
+				<!-- If ratings cookie includes this item already, submit button disappears -->
+				<% unless read_cookies.include?(sub_concept.id) %>
+					<input type="submit" class="btn btn-primary btn-sm" value="Submit"> 
+				<% end %><br> 
+				Rating Count: <%= sub_concept.ratingCount %> - Average: <%= sub_concept.ratingAverage %>
+			</form>
+		</div>
 		</p>
 	<% end %>
 <% end %>

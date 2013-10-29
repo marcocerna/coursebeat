@@ -16,14 +16,12 @@ def create
 		flash[:errors] = @instructor.errors.full_messages
 		render :new
 	end
-
 end
 
 def show
 	@instructor = current_user
 	@courses = @instructor.courses
 	session[:instructor_id] = params[:id]
-	# binding.pry
 end
 
 def edit
@@ -38,6 +36,7 @@ def update
 end
 
 def destroy
-	# Instructor.destroy()
+	# No method yet for destroying Instructor.
+	# Add this as a later feature.
 end
 end
